@@ -8,5 +8,8 @@
     "seed": "npm run seed --prefix backend",
     "dev:backend": "npm run dev --prefix backend",
     "dev:frontend": "npm run dev --prefix frontend"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
