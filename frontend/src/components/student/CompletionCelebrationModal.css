@@ -1,0 +1,241 @@
+.completion-celebration-backdrop {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  overflow-y: auto;
+  place-items: center;
+  padding: 20px;
+  background: rgb(28 25 23 / 82%);
+  backdrop-filter: blur(8px);
+  animation: celebrationFadeIn 220ms ease-out both;
+}
+
+.completion-celebration-modal {
+  position: relative;
+  width: min(100%, 820px);
+  overflow: hidden;
+  border: 2px solid rgb(217 164 65 / 65%);
+  border-radius: 20px;
+  background: #fdfcf9;
+  box-shadow: 0 28px 100px rgb(0 0 0 / 38%), inset 0 0 0 5px #fdfcf9, inset 0 0 0 7px rgb(217 164 65 / 32%);
+  animation: celebrationSpringIn 420ms cubic-bezier(0.18, 1.25, 0.42, 1) both;
+}
+
+.completion-celebration-inner {
+  position: relative;
+  z-index: 1;
+  padding: clamp(22px, 5vw, 42px);
+  text-align: center;
+}
+
+.completion-celebration-eyebrow {
+  color: #8a5b12;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+}
+
+.completion-celebration-modal h2 {
+  max-width: 680px;
+  margin: 10px auto 0;
+  color: #29251d;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.5rem, 4vw, 2.35rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.completion-celebration-description {
+  max-width: 650px;
+  margin: 12px auto 0;
+  color: #57534e;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.celebration-artwork {
+  display: block;
+  width: 100%;
+  max-height: 330px;
+  margin: 14px auto 4px;
+  border: 1px solid #e7dfcf;
+  background:
+    linear-gradient(rgb(161 98 7 / 5%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(161 98 7 / 5%) 1px, transparent 1px),
+    #faf8f1;
+  background-size: 20px 20px;
+}
+
+.celebration-artwork text {
+  fill: #72511b;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+
+.celebration-wheel-particle {
+  transform-origin: 310px 222px;
+  animation: wheelGlow 2.8s ease-in-out infinite;
+}
+
+.celebration-wheel-particle-delayed {
+  transform-origin: 620px 222px;
+  animation-delay: 400ms;
+}
+
+.celebration-wheel-spin {
+  transform-origin: 310px 222px;
+  animation: wheelSpin 8s linear infinite;
+}
+
+.celebration-wheel-spin-delayed {
+  transform-origin: 620px 222px;
+  animation-duration: 11s;
+  animation-direction: reverse;
+}
+
+.celebration-beacon-pulse {
+  transform-origin: 450px 19px;
+  animation: beaconPulse 1.8s ease-in-out infinite;
+}
+
+.completion-celebration-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 24px;
+  color: #57534e;
+  font-size: 0.86rem;
+}
+
+.completion-celebration-details strong {
+  color: #29251d;
+}
+
+.completion-celebration-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.completion-claim-button,
+.completion-back-button {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 11px 18px;
+  font-size: 0.82rem;
+  font-weight: 900;
+  text-align: center;
+  text-decoration: none;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.completion-claim-button {
+  border: 1px solid #8a5b12;
+  background: linear-gradient(135deg, #f2cd77, #d7a642);
+  color: #33240a;
+  box-shadow: 0 0 0 4px rgb(217 164 65 / 15%), 0 8px 20px rgb(138 91 18 / 25%);
+}
+
+.completion-back-button {
+  border: 1px solid #a8a29e;
+  background: transparent;
+  color: #44403c;
+}
+
+.completion-claim-button:hover,
+.completion-back-button:hover {
+  transform: translateY(-2px);
+}
+
+.completion-claim-button:focus-visible,
+.completion-back-button:focus-visible {
+  outline: 3px solid #0f766e;
+  outline-offset: 3px;
+}
+
+.celebration-confetti {
+  position: absolute;
+  z-index: 0;
+  inset: 0 0 auto;
+  height: 190px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.celebration-confetti-piece {
+  position: absolute;
+  top: -14px;
+  left: var(--confetti-x);
+  width: 8px;
+  height: 12px;
+  border-radius: 2px;
+  background: hsl(var(--confetti-hue) 62% 54%);
+  animation: confettiFall 2.6s ease-in var(--confetti-delay) both;
+  transform: rotate(var(--confetti-rotation));
+}
+
+@keyframes celebrationFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes celebrationSpringIn {
+  0% { opacity: 0; transform: scale(0.88) translateY(18px); }
+  70% { opacity: 1; transform: scale(1.015) translateY(-2px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes confettiFall {
+  0% { opacity: 0; transform: translateY(0) rotate(var(--confetti-rotation)); }
+  12% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(205px) rotate(calc(var(--confetti-rotation) + 420deg)); }
+}
+
+@keyframes wheelGlow {
+  0%, 100% { opacity: 0.15; transform: scale(0.92); }
+  50% { opacity: 0.65; transform: scale(1.06); }
+}
+
+@keyframes wheelSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes beaconPulse {
+  0%, 100% { opacity: 0.45; transform: scale(0.82); }
+  50% { opacity: 0.95; transform: scale(1.12); }
+}
+
+@media (max-width: 560px) {
+  .completion-celebration-backdrop {
+    padding: 10px;
+  }
+
+  .completion-celebration-modal {
+    border-radius: 14px;
+  }
+
+  .completion-celebration-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .completion-celebration-backdrop,
+  .completion-celebration-modal,
+  .celebration-wheel-particle,
+  .celebration-wheel-spin,
+  .celebration-beacon-pulse,
+  .celebration-confetti-piece {
+    animation: none !important;
+  }
+}
